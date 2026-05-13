@@ -1,0 +1,22 @@
+{{ define "title" }}Photos &middot; {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<main class="photos">
+{{ $photos := where (where .Site.RegularPages "Section" "ne" "replies") "Params.photo" "!=" nil }}
+{{ if not $photos }}
+  <p><em>(no photos yet)</em></p>
+{{ end }}
+<ul class="photo-grid">
+{{ range $photos.ByDate.Reverse }}
+  <li>
+    <a href="{{ .Permalink }}">
+      {{ if reflect.IsSlice .Params.photo }}
+        <img src="{{ index .Params.photo 0 }}" alt="{{ with .Params.photo_alt }}{{ if reflect.IsSlice . }}{{ index . 0 }}{{ else }}{{ . }}{{ end }}{{ end }}">
+      {{ else }}
+        <img src="{{ .Params.photo }}" alt="{{ with .Params.photo_alt }}{{ . }}{{ end }}">
+      {{ end }}
+    </a>
+  </li>
+{{ end }}
+</ul>
+</main>
+{{ end }}

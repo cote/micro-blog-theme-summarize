@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main>
+{{ $posts := where .Pages "Section" "ne" "replies" }}
+{{ if .Site.Params.paginate_categories }}
+  {{ $paginator := .Paginate $posts.ByDate.Reverse }}
+  {{ if not $paginator.Pages }}
+    <p><em>(nothing here yet)</em></p>
+  {{ end }}
+  {{ range $paginator.Pages }}
+    {{ partial "card.html" . }}
+    <hr>
+  {{ end }}
+  {{ partial "pager.html" $paginator }}
+{{ else }}
+  {{ if not $posts }}
+    <p><em>(nothing here yet)</em></p>
+  {{ end }}
+  {{ range $posts.ByDate.Reverse }}
+    {{ partial "card.html" . }}
+    <hr>
+  {{ end }}
+{{ end }}
+</main>
+{{ end }}

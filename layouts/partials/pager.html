@@ -1,0 +1,61 @@
+{{- /* Numbered pager with sliding 8-page window plus first/last anchors.
+
+  - <= window pages: show all of them, no ellipses.
+  - On pages 1..window: window is 1..N (e.g. 1..8), then "… last".
+  - On pages near end (last <window>): window is total-N+1..total, "first …" leads.
+  - Otherwise: "first …" + 8 pages centered on current + "… last".
+
+  Item count line beneath: "X-Y of TOTAL".
+*/ -}}
+{{- $p := . -}}
+{{- if gt $p.TotalPages 1 -}}
+{{- $cur := $p.PageNumber -}}
+{{- $total := $p.TotalPages -}}
+{{- $window := 8 -}}
+{{- $start := 1 -}}
+{{- $end := $total -}}
+{{- if le $total $window -}}
+  {{- $start = 1 }}{{ $end = $total -}}
+{{- else if le $cur $window -}}
+  {{- $start = 1 }}{{ $end = $window -}}
+{{- else if ge $cur (add (sub $total $window) 1) -}}
+  {{- $start = (add (sub $total $window) 1) }}{{ $end = $total -}}
+{{- else -}}
+  {{- $start = sub $cur 3 }}{{ $end = add $cur 4 -}}
+{{- end -}}
+<nav class="pager"><ul>
+  {{- if $p.HasPrev }}
+    <li><a rel="prev" href="{{ $p.Prev.URL }}">&larr; back</a></li>
+  {{- else }}
+    <li class="disabled">&larr; back</li>
+  {{- end }}
+  {{- $prev := 0 }}
+  {{- range $p.Pagers }}
+    {{- $n := .PageNumber }}
+    {{- $inWindow := and (ge $n $start) (le $n $end) }}
+    {{- $isFirst := eq $n 1 }}
+    {{- $isLast := eq $n $total }}
+    {{- $show := or $inWindow $isFirst $isLast }}
+    {{- if $show }}
+      {{- if and (gt $prev 0) (gt (sub $n $prev) 1) }}
+        <li class="gap">&hellip;</li>
+      {{- end }}
+      {{- if eq $n $cur }}
+        <li class="current"><strong>{{ $n }}</strong></li>
+      {{- else }}
+        <li><a href="{{ .URL }}">{{ $n }}</a></li>
+      {{- end }}
+      {{- $prev = $n }}
+    {{- end }}
+  {{- end }}
+  {{- if $p.HasNext }}
+    <li><a rel="next" href="{{ $p.Next.URL }}">next &rarr;</a></li>
+  {{- else }}
+    <li class="disabled">next &rarr;</li>
+  {{- end }}
+</ul>
+{{- $first := add (mul (sub $cur 1) $p.PagerSize) 1 -}}
+{{- $last := add (mul (sub $cur 1) $p.PagerSize) $p.NumberOfElements -}}
+<p class="pager-count">{{ $first }}&ndash;{{ $last }} of {{ $p.TotalNumberOfElements }}</p>
+</nav>
+{{- end -}}

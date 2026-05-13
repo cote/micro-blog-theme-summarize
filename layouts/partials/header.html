@@ -1,0 +1,11 @@
+<header class="site">
+  {{ if .IsHome }}
+    <h1><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+    {{ with .Site.Params.description }}<p class="tag">{{ . | safeHTML }}</p>{{ end }}
+  {{ else }}
+    <p class="back-home"><a href="{{ .Site.Home.RelPermalink }}">&larr; {{ .Site.Title }}</a></p>
+    {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+    {{ block "meta" . }}{{ end }}
+  {{ end }}
+</header>
+<hr class="double">

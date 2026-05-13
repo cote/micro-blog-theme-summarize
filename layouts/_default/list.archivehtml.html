@@ -1,0 +1,30 @@
+{{ define "title" }}Archive &middot; {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<main class="archive">
+{{ $posts := where .Site.RegularPages "Section" "ne" "replies" }}
+{{ $byYearMonth := dict }}
+{{ range $posts.ByDate.Reverse }}
+  {{ $year := .Date.Format "2006" }}
+  {{ $month := .Date.Format "January" }}
+  {{ $key := printf "%s-%s" $year $month }}
+  {{ $existing := index $byYearMonth $key | default (slice) }}
+  {{ $byYearMonth = merge $byYearMonth (dict $key (append (slice .) $existing)) }}
+{{ end }}
+
+{{ $currentYear := "" }}
+{{ range $posts.ByDate.Reverse }}
+  {{ $year := .Date.Format "2006" }}
+  {{ if ne $year $currentYear }}
+    {{ if $currentYear }}</ul>{{ end }}
+    <h2>{{ $year }}</h2>
+    <ul class="archive-list">
+    {{ $currentYear = $year }}
+  {{ end }}
+  <li>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time> &middot;
+    <a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 100 }}{{ end }}</a>
+  </li>
+{{ end }}
+{{ if $posts }}</ul>{{ else }}<p><em>(empty)</em></p>{{ end }}
+</main>
+{{ end }}

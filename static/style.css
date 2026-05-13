@@ -1,0 +1,157 @@
+html { background: #ffffff; color: #000000; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 19px;
+  line-height: 1.5;
+  max-width: 44em;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+article p { font-size: 1.05em; line-height: 1.6; }
+
+/* Highlight emphasized text in post bodies. Bold from `**...**` becomes a
+   mustard-yellow highlight, matching cote.io's <mark> styling. Scoped to
+   <article> so the pager's <strong> (current page number) stays unaffected. */
+article mark, mark {
+  /* Hand-drawn marker highlight: yellow rect distorted by Perlin noise via
+     an inline SVG. box-decoration-break: clone makes multi-line highlights
+     get one fragment per line so the jagged edge wraps naturally.
+     Only <mark> is highlighted; <strong> is left as default bold. */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='50' viewBox='0 0 400 50' preserveAspectRatio='none'><defs><filter id='r' x='-2%25' y='-10%25' width='104%25' height='120%25'><feTurbulence type='fractalNoise' baseFrequency='0.05 0.7' numOctaves='2' seed='3'/><feDisplacementMap in='SourceGraphic' scale='5'/></filter></defs><rect x='4' y='4' width='392' height='42' fill='%23e6c96a' filter='url(%23r)'/></svg>");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0.05em 0.3em;
+  color: #0a0a0a;
+  font-weight: normal;
+}
+article strong a, article strong a:visited,
+article mark a,   article mark a:visited,
+mark a, mark a:visited { color: #0000ee; text-decoration-color: #0000ee; }
+article strong a:hover, article mark a:hover, mark a:hover { color: #2d5ba8; }
+
+a { color: #0000ee; }
+a:visited { color: #551a8b; }
+a:active { color: #ff0000; }
+h1 { font-size: 2em; font-weight: bold; margin: 0 0 0.2em 0; }
+h2 { font-size: 1.4em; font-weight: bold; margin: 0.6em 0 0.2em 0; }
+header.site p.tag { font-style: italic; margin: 0 0 0.5em 0; }
+hr { border: 0; border-top: 1px solid #000; margin: 1.2em 0; }
+hr.double { border-top: 3px double #000; }
+article.summary-card { margin: 1.5em 0; }
+article.summary-card h2 { margin-top: 0; }
+article.summary-card .meta { font-size: 0.9em; color: #333; }
+article.summary-card .hero { margin: 0.3em 0 0.6em 0; }
+article.summary-card .hero img { max-width: 100%; height: auto; border: 1px solid #000; }
+article.summary-card p.excerpt { margin: 0.4em 0; }
+article.summary-card p.more a { font-weight: bold; }
+
+/* Microblog notes: cards without a title — render the body inline on the
+   home page, with a small datestamp link beneath. */
+article.summary-card.note { margin: 1.2em 0; }
+article.summary-card.note .note-body p:first-child { margin-top: 0; }
+article.summary-card.note .note-body p:last-child { margin-bottom: 0.3em; }
+article.summary-card.note .note-body img { max-width: 100%; height: auto; border: 1px solid #000; }
+article.summary-card.note .meta { font-size: 0.85em; color: #555; }
+
+/* Single-post body */
+article.h-entry { margin: 1em 0 2em 0; }
+article.h-entry .e-content p { font-size: 1.05em; line-height: 1.6; }
+article.h-entry .e-content img { max-width: 100%; height: auto; border: 1px solid #000; }
+
+/* Archive list */
+main.archive h2 { margin-top: 1.2em; }
+main.archive ul.archive-list { list-style: none; padding: 0; margin: 0 0 1em 0; }
+main.archive ul.archive-list li { margin: 0.2em 0; }
+main.archive ul.archive-list time { color: #555; font-size: 0.9em; display: inline-block; min-width: 4.5em; }
+
+/* Photo grid */
+main.photos ul.photo-grid {
+  list-style: none; padding: 0; margin: 1em 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.6em;
+}
+main.photos ul.photo-grid li { margin: 0; }
+main.photos ul.photo-grid img {
+  width: 100%; height: 180px; object-fit: cover;
+  border: 1px solid #000; display: block;
+}
+nav.pager { margin: 2em 0 0 0; font-size: 0.95em; text-align: center; }
+nav.pager ul { list-style: none; padding: 0; margin: 0; }
+nav.pager li { display: inline; margin: 0 0.4em; }
+nav.pager li.current strong { padding: 0 0.2em; }
+nav.pager li.gap { color: #666; }
+nav.pager li.disabled { color: #aaa; }
+nav.pager .pager-count { margin: 0.6em 0 0 0; color: #555; font-size: 0.9em; }
+footer.site { margin: 3em 0 1em 0; font-size: 0.85em; color: #444; border-top: 1px solid #000; padding-top: 0.6em; }
+aside.asset-tray {
+  margin: 1em 0; padding: 0.4em 0;
+  border-top: 1px solid #000; border-bottom: 1px solid #000;
+  font-size: 0.9em;
+}
+aside.asset-tray a { margin-right: 0.8em; }
+audio { width: 100%; margin: 0.6em 0; }
+.back-home { font-size: 0.9em; }
+
+/* --- sidenotes (Tufte-ish, hanging right) ---
+   The <aside class="sidenote"> is placed in the flow immediately BEFORE
+   the paragraph it annotates. On wide viewports it floats into the right
+   margin via float + negative margin-right and the paragraph wraps to its
+   left. On narrow viewports it collapses inline above the paragraph as a
+   bordered block. No wrapper element needed. */
+aside.sidenote { margin: 0; }
+aside.sidenote figure { margin: 0; }
+aside.sidenote figure img {
+  max-width: 100%; height: auto; display: block;
+  border: 1px solid #000; background: #fff;
+}
+aside.sidenote figcaption { font-size: 0.85em; font-style: italic; color: #333; margin-top: 0.3em; }
+aside.sidenote cite { font-style: italic; }
+
+sup.sidenote-ref a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 0.1em;
+}
+sup.sidenote-ref a:hover { text-decoration: underline; }
+
+a.sidenote-number {
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 0.2em;
+  font-style: normal;
+}
+a.sidenote-number:hover { text-decoration: underline; }
+
+@media (min-width: 1050px) {
+  aside.sidenote {
+    float: right;
+    clear: right;
+    width: 9em;
+    margin: 0 -10em 0.8em 1em;
+    font-size: 0.85em;
+    line-height: 1.4;
+    font-style: italic;
+    color: #333;
+    text-align: left;
+  }
+  aside.sidenote > *:first-child { margin-top: 0; }
+  aside.sidenote > *:last-child { margin-bottom: 0; }
+  aside.sidenote figcaption { text-align: left; }
+  aside.sidenote figure a img:hover { outline: 2px solid #0000ee; }
+}
+
+@media (max-width: 1049.98px) {
+  aside.sidenote {
+    display: block;
+    margin: 0.8em 0 0.8em 1.5em;
+    padding-left: 0.8em;
+    border-left: 3px double #000;
+    font-size: 0.92em;
+    font-style: italic;
+    color: #222;
+    scroll-margin-top: 1em;
+  }
+  aside.sidenote figure { font-style: normal; }
+}
