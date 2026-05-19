@@ -1,6 +1,5 @@
 <footer class="site">
-  {{ if .Site.Menus.main }}
-  <nav class="footer-pages">
+  <nav class="footer-links">
     <ul>
       {{ range .Site.Menus.main }}
         {{ $redirect := "" }}
@@ -11,27 +10,14 @@
           <li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
         {{ end }}
       {{ end }}
-    </ul>
-  </nav>
-  {{ end }}
-
-  <nav class="footer-defaults">
-    <ul>
       <li><a href="{{ "feed.xml" | absURL }}">RSS</a></li>
       <li><a href="{{ "feed.json" | absURL }}">JSON Feed</a></li>
       {{ if .Site.Params.has_podcasts }}
         <li><a href="{{ "podcast.xml" | absURL }}">Podcast</a></li>
       {{ end }}
       {{ with .Site.Params.author.username }}
-        <li><a href="https://micro.blog/{{ . }}" rel="me">Also on Micro.blog</a></li>
+        <li><a href="https://micro.blog/{{ . }}" rel="me">Follow on Micro.blog</a></li>
       {{ end }}
     </ul>
   </nav>
-
-  {{ if not .Site.Params.hide_colophon }}
-  <p class="colophon">
-    {{ .Site.Title }} &middot;
-    theme: <a href="https://github.com/cote/micro-blog-theme-summarize">1993</a>
-  </p>
-  {{ end }}
 </footer>
