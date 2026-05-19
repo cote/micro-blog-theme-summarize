@@ -1,4 +1,4 @@
-# Summarize — a Micro.blog theme
+# 1993 — a Micro.blog theme
 
 NCSA Mosaic / 1993-web aesthetic for [Micro.blog](https://micro.blog/). Times New Roman on white paper, period-correct blue/purple/red link colors, double-line `<hr>` under the site header, hanging Tufte-style sidenotes on wide viewports, mustard `<mark>` highlights inside posts.
 
@@ -23,13 +23,13 @@ NCSA Mosaic / 1993-web aesthetic for [Micro.blog](https://micro.blog/). Times Ne
 
 1. Fork or note this repo's URL.
 2. Micro.blog → **Design → Edit Custom Themes → New Theme** → paste the GitHub URL.
-3. Micro.blog → **Design → Select Theme** → pick "Summarize".
+3. Micro.blog → **Design → Select Theme** → pick "1993".
 
 User CSS edits in the Design panel land in `custom.css` and override `static/style.css` (the theme links `custom.css` after its own stylesheet via the standard `partials/microblog_head.html`).
 
 ## Standalone Hugo use
 
-It is a regular Hugo theme too. Drop it under `themes/summarize/`, set `theme: summarize` in your Hugo config, and provide a `config.yaml`/`.toml` with at least:
+It is a regular Hugo theme too. Drop it under `themes/1993/`, set `theme: 1993` in your Hugo config, and provide a `config.yaml`/`.toml` with at least:
 
 ```yaml
 paginate: 25
