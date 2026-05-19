@@ -22,8 +22,6 @@
       {{ if .Site.Params.has_podcasts }}
         <li><a href="{{ "podcast.xml" | absURL }}">Podcast</a></li>
       {{ end }}
-      <li><a href="{{ "archive/" | absURL }}">Archive</a></li>
-      <li><a href="{{ "categories/" | absURL }}">Categories</a></li>
       {{ with .Site.Params.author.username }}
         <li><a href="https://micro.blog/{{ . }}" rel="me">Also on Micro.blog</a></li>
       {{ end }}
