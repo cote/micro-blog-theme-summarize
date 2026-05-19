@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main>
-{{ $posts := where .Site.RegularPages "Section" "not in" (slice "replies" "pages" "photos" "archive") }}
+{{ $posts := where .Site.RegularPages "Type" "post" }}
 {{ if .Site.Params.paginate_home }}
   {{ $paginator := .Paginate $posts.ByDate.Reverse }}
   {{ if not $paginator.Pages }}
