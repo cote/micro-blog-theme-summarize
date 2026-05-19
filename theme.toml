@@ -1,10 +1,10 @@
 name = "1993"
 license = "MIT"
-description = "NCSA Mosaic / 1993-web look for Micro.blog. Times New Roman, period-correct link colors, double-rule headers."
+description = "NCSA Mosaic / 1993-web look for Micro.blog. Times New Human, period-correct link colors, double-rule headers."
 homepage = "https://github.com/cote/micro-blog-theme-summarize"
 tags = ["minimal", "retro", "blog", "ncsa", "mosaic"]
 features = ["blog"]
-min_version = "0.100.0"
+min_version = "0.91.0"
 
 [author]
 name = "Michael Coté"
