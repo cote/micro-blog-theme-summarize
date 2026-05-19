@@ -13,11 +13,6 @@
       "field": "params.noindex",
       "label": "Hide from search engines and AI crawlers. Adds a noindex/nofollow meta tag to every page.",
       "type": "boolean"
-    },
-    {
-      "field": "params.hide_colophon",
-      "label": "Hide the small \"theme: 1993\" attribution line in the footer.",
-      "type": "boolean"
     }
   ]
 }
