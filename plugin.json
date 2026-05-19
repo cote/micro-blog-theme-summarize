@@ -1,37 +1,23 @@
 {
-  "$schema": "https://micro.blog/schemas/plugin.json",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "title": "1993",
-  "description": "NCSA Mosaic / 1993-web look for Micro.blog. Times New Human on white, period-correct link colors, double-rule headers, hanging Tufte-style sidenotes.",
-  "parameters": [
+  "description": "NCSA Mosaic / 1993-web look for Micro.blog. Times New Human on white, period-correct link colors, double-rule headers. Set the built-in design to Blank.",
+  "fields": [
     {
-      "name": "Tagline",
-      "key": "description",
-      "type": "text",
-      "description": "Optional short tagline shown under the site title on the home page. Leave blank to hide.",
-      "default_value": ""
+      "field": "params.description",
+      "label": "Tagline shown under the site title on the home page. Leave blank to hide.",
+      "placeholder": "Enter your tagline here",
+      "type": "string"
     },
     {
-      "name": "Hide from search engines and AI crawlers",
-      "key": "noindex",
-      "type": "select",
-      "description": "Adds a noindex/nofollow meta tag to every page. Use for private or personal blogs you don't want crawled or scraped for LLM training.",
-      "default_value": "no",
-      "values": [
-        { "name": "No, allow indexing", "value": "no" },
-        { "name": "Yes, block crawlers and AI bots", "value": "yes" }
-      ]
+      "field": "params.noindex",
+      "label": "Hide from search engines and AI crawlers. Adds a noindex/nofollow meta tag to every page.",
+      "type": "boolean"
     },
     {
-      "name": "Hide theme attribution in footer",
-      "key": "hide_colophon",
-      "type": "select",
-      "description": "By default the footer shows a small \"theme: 1993\" link. Set to Yes to hide it.",
-      "default_value": "no",
-      "values": [
-        { "name": "No, show theme attribution", "value": "no" },
-        { "name": "Yes, hide it", "value": "yes" }
-      ]
+      "field": "params.hide_colophon",
+      "label": "Hide the small \"theme: 1993\" attribution line in the footer.",
+      "type": "boolean"
     }
   ]
 }

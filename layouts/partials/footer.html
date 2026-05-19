@@ -28,7 +28,7 @@
     </ul>
   </nav>
 
-  {{ if ne .Site.Params.hide_colophon "yes" }}
+  {{ if not .Site.Params.hide_colophon }}
   <p class="colophon">
     {{ .Site.Title }} &middot;
     theme: <a href="https://github.com/cote/micro-blog-theme-summarize">1993</a>
