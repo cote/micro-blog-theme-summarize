@@ -1,7 +1,37 @@
 <footer class="site">
-  <p>{{ .Site.Title }} &middot; theme: <a href="https://github.com/cote/micro-blog-theme-summarize">Summarize</a> &middot;
-     <a href="{{ .Site.Home.RelPermalink }}">home</a> &middot;
-     <a href="{{ "archive/" | absURL }}">archive</a> &middot;
-     <a href="{{ "categories/" | absURL }}">categories</a> &middot;
-     <a href="{{ "feed.xml" | absURL }}">RSS</a></p>
+  {{ if .Site.Menus.main }}
+  <nav class="footer-pages">
+    <ul>
+      {{ range .Site.Menus.main }}
+        {{ $redirect := "" }}
+        {{ with .Page }}{{ $redirect = .Params.redirect }}{{ end }}
+        {{ if $redirect }}
+          <li><a href="{{ $redirect }}">{{ .Name }}</a></li>
+        {{ else }}
+          <li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+  {{ end }}
+
+  <nav class="footer-defaults">
+    <ul>
+      <li><a href="{{ "feed.xml" | absURL }}">RSS</a></li>
+      <li><a href="{{ "feed.json" | absURL }}">JSON Feed</a></li>
+      {{ if .Site.Params.has_podcasts }}
+        <li><a href="{{ "podcast.xml" | absURL }}">Podcast</a></li>
+      {{ end }}
+      <li><a href="{{ "archive/" | absURL }}">Archive</a></li>
+      <li><a href="{{ "categories/" | absURL }}">Categories</a></li>
+      {{ with .Site.Params.author.username }}
+        <li><a href="https://micro.blog/{{ . }}" rel="me">Also on Micro.blog</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+
+  <p class="colophon">
+    {{ .Site.Title }} &middot;
+    theme: <a href="https://github.com/cote/micro-blog-theme-summarize">Summarize</a>
+  </p>
 </footer>

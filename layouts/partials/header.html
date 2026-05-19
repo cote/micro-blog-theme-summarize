@@ -7,5 +7,21 @@
     {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
     {{ block "meta" . }}{{ end }}
   {{ end }}
+
+  {{ if .Site.Menus.main }}
+  <nav class="site-nav">
+    <ul>
+      {{ range .Site.Menus.main }}
+        {{ $redirect := "" }}
+        {{ with .Page }}{{ $redirect = .Params.redirect }}{{ end }}
+        {{ if $redirect }}
+          <li><a href="{{ $redirect }}">{{ .Name }}</a></li>
+        {{ else }}
+          <li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+  {{ end }}
 </header>
 <hr class="double">

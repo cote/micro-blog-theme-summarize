@@ -2,8 +2,6 @@
 
 NCSA Mosaic / 1993-web aesthetic for [Micro.blog](https://micro.blog/). Times New Roman on white paper, period-correct blue/purple/red link colors, double-line `<hr>` under the site header, hanging Tufte-style sidenotes on wide viewports, mustard `<mark>` highlights inside posts.
 
-Originally distilled from the `ncsa-mosaic` Hugo theme used by [cote.io](https://cote.io)'s summary site, ported to satisfy Micro.blog's theme contract.
-
 ## Look
 
 - Type: Times New Roman, 19px base, 1.5 line-height, 44em max column.
