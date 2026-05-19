@@ -1,13 +1,25 @@
 # 1993 — a Micro.blog theme
 
-NCSA Mosaic / 1993-web aesthetic for [Micro.blog](https://micro.blog/). Times New Roman on white paper, period-correct blue/purple/red link colors, double-line `<hr>` under the site header, hanging Tufte-style sidenotes on wide viewports, mustard `<mark>` highlights inside posts.
+NCSA Mosaic / 1993-web aesthetic for [Micro.blog](https://micro.blog/). [Times New Human](https://cocogun.com) on white paper, period-correct blue/purple/red link colors, double-line `<hr>` under the site header, hanging Tufte-style sidenotes on wide viewports, mustard `<mark>` highlights inside posts.
 
 ## Look
 
-- Type: Times New Roman, 19px base, 1.5 line-height, 44em max column.
+- Type: Times New Human (bundled), 19px base, 1.5 line-height, 44em max column. Falls back to Times New Roman.
 - Colors: white background, black text, `#0000ee` / `#551a8b` / `#ff0000` for link states. Literal Mosaic defaults.
 - Rules: `<hr>` between post cards, `<hr class="double">` under the site header. Those are the only two rule styles.
-- No webfonts. No icons. No JavaScript. No dark mode.
+- One self-hosted font. No icons. No JavaScript. No dark mode.
+
+## Configuration
+
+In Micro.blog: **Design → Plugins → 1993 → Edit Settings**. Available toggles:
+
+- **Tagline** — optional short string under the site title on the home page.
+- **Hide from search engines and AI crawlers** — adds noindex meta tags. Good for private or personal blogs that shouldn't end up in training data.
+- **Hide theme attribution in footer** — drops the small "theme: 1993" line.
+
+## Font: Times New Human
+
+Bundled in `static/fonts/TimesNewHuman/`. SIL Open Font License 1.1. Based on Nimbus Roman, modified in 2025 by [Cocogun](https://cocogun.com) to include the "Am dash" glyph — a typographic mark of human authorship. See the license file in the fonts directory.
 
 ## Features
 

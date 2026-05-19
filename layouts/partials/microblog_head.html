@@ -1,3 +1,9 @@
+{{ if eq .Site.Params.noindex "yes" }}
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="bingbot" content="noindex, nofollow">
+{{ end }}
+
 {{ if ne .Kind "home" }}
   <link rel="alternate" href="{{ "feed.xml" | absURL }}" type="application/rss+xml" title="{{ $.Site.Title }}">
   <link rel="alternate" href="{{ "feed.json" | absURL }}" type="application/json" title="{{ $.Site.Title }}">
@@ -13,18 +19,6 @@
 {{ end }}
 
 <link rel="me" href="https://micro.blog/{{ .Site.Params.author.username }}">
-
-{{ with .Site.Params.twitter_username }}
-  <link rel="me" href="https://twitter.com/{{ . }}">
-{{ end }}
-
-{{ with .Site.Params.github_username }}
-  <link rel="me" href="https://github.com/{{ . }}">
-{{ end }}
-
-{{ with .Site.Params.instagram_username }}
-  <link rel="me" href="https://instagram.com/{{ . }}">
-{{ end }}
 
 <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Params.author.username }}/favicon.png" type="image/x-icon">
 <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}">

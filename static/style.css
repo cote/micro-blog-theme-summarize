@@ -1,6 +1,38 @@
+/* Times New Human - SIL OFL 1.1, by Cocogun based on Nimbus Roman.
+   The "Am dash" glyph is a typographic mark of human authorship. See
+   static/fonts/TimesNewHuman/README.txt and SIL Open Font License.txt. */
+@font-face {
+  font-family: "Times New Human";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/TimesNewHuman/TimesNewHuman-Reg.otf") format("opentype");
+}
+@font-face {
+  font-family: "Times New Human";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/TimesNewHuman/TimesNewHuman-RegIta.otf") format("opentype");
+}
+@font-face {
+  font-family: "Times New Human";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/TimesNewHuman/TimesNewHuman-Bol.otf") format("opentype");
+}
+@font-face {
+  font-family: "Times New Human";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/TimesNewHuman/TimesNewHuman-BolIta.otf") format("opentype");
+}
+
 html { background: #ffffff; color: #000000; }
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Human", "Times New Roman", Times, serif;
   font-size: 19px;
   line-height: 1.5;
   max-width: 44em;

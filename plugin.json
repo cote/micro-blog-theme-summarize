@@ -1,5 +1,37 @@
 {
-    "version": "0.1.0",
-    "title": "Summarize",
-    "description": "NCSA Mosaic / 1993-web look for Micro.blog. Times New Roman on white, period-correct link colors, double-rule headers, hanging Tufte-style sidenotes."
+  "$schema": "https://micro.blog/schemas/plugin.json",
+  "version": "0.2.0",
+  "title": "1993",
+  "description": "NCSA Mosaic / 1993-web look for Micro.blog. Times New Human on white, period-correct link colors, double-rule headers, hanging Tufte-style sidenotes.",
+  "parameters": [
+    {
+      "name": "Tagline",
+      "key": "description",
+      "type": "text",
+      "description": "Optional short tagline shown under the site title on the home page. Leave blank to hide.",
+      "default_value": ""
+    },
+    {
+      "name": "Hide from search engines and AI crawlers",
+      "key": "noindex",
+      "type": "select",
+      "description": "Adds a noindex/nofollow meta tag to every page. Use for private or personal blogs you don't want crawled or scraped for LLM training.",
+      "default_value": "no",
+      "values": [
+        { "name": "No, allow indexing", "value": "no" },
+        { "name": "Yes, block crawlers and AI bots", "value": "yes" }
+      ]
+    },
+    {
+      "name": "Hide theme attribution in footer",
+      "key": "hide_colophon",
+      "type": "select",
+      "description": "By default the footer shows a small \"theme: 1993\" link. Set to Yes to hide it.",
+      "default_value": "no",
+      "values": [
+        { "name": "No, show theme attribution", "value": "no" },
+        { "name": "Yes, hide it", "value": "yes" }
+      ]
+    }
+  ]
 }
