@@ -121,7 +121,7 @@ nav.site-nav ul { list-style: none; padding: 0; margin: 0; }
 nav.site-nav li { display: inline; }
 nav.site-nav li + li::before { content: " \00B7 "; color: #000; }
 
-footer.site { margin: 3em 0 1em 0; font-size: 0.85em; color: #444; border-top: 1px solid #000; padding-top: 0.6em; }
+footer.site { margin: 1em 0 1em 0; font-size: 0.85em; color: #444; }
 footer.site nav { margin: 0.3em 0; }
 footer.site nav ul { list-style: none; padding: 0; margin: 0; }
 footer.site nav li { display: inline; }

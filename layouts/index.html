@@ -6,18 +6,20 @@
   {{ if not $paginator.Pages }}
     <p><em>(no posts yet)</em></p>
   {{ end }}
-  {{ range $paginator.Pages }}
-    {{ partial "card.html" . }}
-    <hr>
+  {{ $pp := $paginator.Pages }}
+  {{ range $i, $p := $pp }}
+    {{ if ne $i 0 }}<hr>{{ end }}
+    {{ partial "card.html" $p }}
   {{ end }}
   {{ partial "pager.html" $paginator }}
 {{ else }}
   {{ if not $posts }}
     <p><em>(no posts yet)</em></p>
   {{ end }}
-  {{ range $posts.ByDate.Reverse }}
-    {{ partial "card.html" . }}
-    <hr>
+  {{ $rp := $posts.ByDate.Reverse }}
+  {{ range $i, $p := $rp }}
+    {{ if ne $i 0 }}<hr>{{ end }}
+    {{ partial "card.html" $p }}
   {{ end }}
 {{ end }}
 </main>
