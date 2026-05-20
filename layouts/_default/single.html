@@ -14,7 +14,37 @@
     </p>
   {{ end }}
 
+  {{ if hasSuffix .RelPermalink "/search/" }}
+    <style>.e-content form { display: none; }</style>
+    <p id="search-empty" style="display:none"><em>No results found.</em></p>
+  {{ end }}
+
   <div class="e-content">{{ .Content }}</div>
+
+  {{ if hasSuffix .RelPermalink "/search/" }}
+    <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var q = (params.get("q") || "").trim();
+      var pageH1 = document.querySelector("header.site h1");
+      if (q && pageH1) { pageH1.textContent = "Search for: " + q; }
+      if (!q) return;
+      function check() {
+        var results = document.getElementById("list_results");
+        var empty = document.getElementById("search-empty");
+        if (!results || !empty) return;
+        empty.style.display = results.children.length === 0 ? "" : "none";
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        var results = document.getElementById("list_results");
+        if (results) {
+          new MutationObserver(check).observe(results, { childList: true });
+        }
+        setTimeout(check, 2500);
+      });
+    })();
+    </script>
+  {{ end }}
 
   <a class="u-url" href="{{ .Permalink }}" hidden></a>
   {{ partial "microblog_syndication.html" . }}
