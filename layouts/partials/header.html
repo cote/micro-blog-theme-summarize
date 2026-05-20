@@ -1,5 +1,6 @@
 <header class="site">
-  <form class="site-search" action="/search" method="get">
+  <form class="site-search" action="https://duckduckgo.com/" method="get"
+        onsubmit="this.q.value = 'site:' + location.hostname + ' ' + this.q.value;">
     <input type="text" name="q" aria-label="Search">
     <button type="submit">Search</button>
   </form>
