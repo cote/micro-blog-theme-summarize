@@ -1,6 +1,12 @@
 <header class="site">
+  <form class="site-search" action="/search" method="get">
+    <input type="text" name="q" aria-label="Search">
+    <button type="submit">Search</button>
+  </form>
+
   {{ if .IsHome }}
     <h1><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+    {{ with .Site.Params.description }}<p class="tagline"><em>{{ . }}</em></p>{{ end }}
   {{ else }}
     <p class="back-home"><a href="{{ .Site.Home.RelPermalink }}">&larr; {{ .Site.Title }}</a></p>
     {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}

@@ -68,7 +68,30 @@ a:visited { color: #551a8b; }
 a:active { color: #ff0000; }
 h1 { font-size: 2em; font-weight: bold; margin: 0 0 0.2em 0; }
 h2 { font-size: 1.4em; font-weight: bold; margin: 0.6em 0 0.2em 0; }
+header.site { position: relative; }
 header.site p.tag { font-style: italic; margin: 0 0 0.5em 0; }
+header.site p.tagline { margin: -0.3em 0 0.5em 0; font-size: 1em; }
+
+.site-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.9em;
+}
+.site-search input[type="text"] { width: 10em; }
+.site-search button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #c0c0c0;
+  color: #000;
+  border: 2px outset #c0c0c0;
+  border-radius: 0;
+  padding: 2px 10px;
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.site-search button:active { border-style: inset; }
 hr { border: 0; border-top: 1px solid #000; margin: 1.2em 0; }
 hr.double { border-top: 3px double #000; }
 article.summary-card { margin: 1.5em 0; }
