@@ -14,14 +14,14 @@
     </p>
   {{ end }}
 
-  {{ if hasSuffix .RelPermalink "/search/" }}
+  {{ if strings.HasSuffix .RelPermalink "/search/" }}
     <style>.e-content form { display: none; }</style>
     <p id="search-empty" style="display:none"><em>No results found.</em></p>
   {{ end }}
 
   <div class="e-content">{{ .Content }}</div>
 
-  {{ if hasSuffix .RelPermalink "/search/" }}
+  {{ if strings.HasSuffix .RelPermalink "/search/" }}
     <script>
     (function() {
       var params = new URLSearchParams(window.location.search);
